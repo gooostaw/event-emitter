@@ -1,0 +1,13 @@
+{
+  "name": "event-emitter",
+  "version": "0.0.1",
+  "description": "event emitter library",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gooostaw@bitbucket.org/gooostaw/event-emitter.git"
+  },
+  "author": "Konrad Sobierajski",
+  "license": "UNLICENSED",
+  "homepage": "https://bitbucket.org/gooostaw/event-emitter#readme"
+}
