@@ -12,7 +12,7 @@ declare class EventListener {
     off(): void;
     remove(): void;
 }
-export declare class EventEmitter {
+export default class EventEmitter {
     events: Map<string, Set<EventListener>>;
     constructor();
     getListenersSet(name: string): Set<EventListener>;

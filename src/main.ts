@@ -39,7 +39,7 @@ class EventListener {
     }
 }
 
-export class EventEmitter {
+export default class EventEmitter {
     events: Map<string, Set<EventListener>>;
 
     constructor() {
