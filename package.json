@@ -2,7 +2,7 @@
     "name": "event-emitter",
     "version": "0.0.1",
     "description": "event emitter library",
-    "main": "dist/main.ts",
+    "main": "dist/main.js",
     "scripts": {
         "build": "tsc"
     },
