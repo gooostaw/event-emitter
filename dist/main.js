@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class EventListener {
     constructor(eventEmitter, eventName, listenerFunc) {
         this.eventEmitter = eventEmitter;
@@ -24,7 +26,7 @@ class EventListener {
             listeners.delete(this);
     }
 }
-export default class EventEmitter {
+class EventEmitter {
     constructor() {
         this.events = new Map();
     }
@@ -61,3 +63,4 @@ export default class EventEmitter {
                 listener.remove();
     }
 }
+exports.default = EventEmitter;
