@@ -7,12 +7,14 @@ class EventListener {
     eventName: string;
     func: ListenerFunc;
     isOn: boolean;
+    emitOnce: boolean;
 
-    constructor(eventEmitter: EventEmitter, eventName: string, listenerFunc: ListenerFunc) {
+    constructor(eventEmitter: EventEmitter, eventName: string, listenerFunc: ListenerFunc, emitOnce: boolean = false) {
         this.eventEmitter = eventEmitter;
         this.eventName = eventName;
         this.func = listenerFunc;
         this.isOn = true;
+        this.emitOnce = emitOnce;
 
         let listeners = eventEmitter.getListenersSet(eventName);
         if (listeners)
@@ -20,8 +22,11 @@ class EventListener {
     }
 
     emit(...args: any[]) {
-        if (this.isOn)
+        if (this.isOn) {
+            if (this.emitOnce)
+                this.remove();
             this.func(...args);
+        }
     }
 
     on() {
@@ -58,6 +63,10 @@ export default class EventEmitter {
 
     on(eventName: string, listenerFn: ListenerFunc) {
         return new EventListener(this, eventName, listenerFn);
+    }
+
+    one(eventName: string, listenerFn: ListenerFunc){
+        return new EventListener(this, eventName, listenerFn, true);
     }
 
     off(eventName: string, listenerFn: ListenerFunc) {
