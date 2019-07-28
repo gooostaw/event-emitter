@@ -1,5 +1,7 @@
 {
     "name": "event-emitter",
+    "author": "Konrad Sobierajski",
+    "license": "UNLICENSED",
     "version": "0.0.1",
     "description": "event emitter library",
     "main": "dist/main.js",
@@ -10,6 +12,7 @@
         "type": "git",
         "url": "git@bitbucket.org:gooostaw/event-emitter.git"
     },
-    "author": "Konrad Sobierajski",
-    "license": "UNLICENSED"
+    "devDependencies": {
+        "typescript": "^3.5.0"
+    }
 }
