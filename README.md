@@ -2,6 +2,11 @@
 
 Event-emitter is an easy-to-use ES module for web browsers. The library allows you to create event emitters and listeners. Listeners can be switched on and off.
 
+# Install
+```
+$ npm install --save @gooostaw/event-emitter
+```
+
 # Usage
 
 Import:

@@ -1,9 +1,10 @@
 {
-    "name": "event-emitter",
+    "name": "@gooostaw/event-emitter",
     "author": "Konrad Sobierajski",
-    "license": "UNLICENSED",
-    "version": "0.0.1",
+    "license": "MIT",
+    "version": "1.0.2",
     "description": "event emitter library",
+    "keywords": ["event","emitter"],
     "main": "dist/main.js",
     "scripts": {
         "build": "tsc"
