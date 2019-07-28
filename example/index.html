@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event emitter example.</title>
+    <style>
+        body {
+            padding: 20px;
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+            margin: auto;
+        }
+
+        input {
+            font-size: 20px;
+        }
+
+        .block {
+            margin: 10px;
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(46, 101, 150);
+        }
+
+        .block a{
+            margin: 5px;
+        }
+
+        .output{
+            background-color: rgb(255, 222, 36);
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='block'>
+        <input type="button" id="emit-button" value="Emit event">
+    </div>
+    <div class='block'>
+        <a>on click:</a>
+        <a id='on-click-output' class="output">0</a>
+    </div>
+    <div class='block'>
+        <a>one click:</a>
+        <a id='one-click-output'  class="output">0</a>
+    </div>
+    <div class='block'>
+        <input type="text" placeholder="Argument" id='argument' value="something">
+        <a>on click with argument:</a>
+        <a id='on-click-argument-output'  class="output">0</a>
+    </div>
+
+    <script type="module">
+        import EventEmitter from '../dist/main.js';
+
+        let emitButton = document.getElementById("emit-button");
+        let onClickOutput = document.getElementById("on-click-output");
+        let oneClickOutput = document.getElementById("one-click-output");
+        let oneClickArgumentOutput = document.getElementById("on-click-argument-output");
+        let argument = document.getElementById("argument");
+        let eventEmitter = new EventEmitter();
+
+        function random() {
+            return Math.round(Math.random() * 1000);
+        }
+
+        eventEmitter.on('click', () => {
+            onClickOutput.textContent = random();
+        });
+
+
+        eventEmitter.one('click', () => {
+            oneClickOutput.textContent = random();
+        });
+
+
+        eventEmitter.on('click', () => {
+            oneClickArgumentOutput.textContent = argument.value;
+        });
+
+        emitButton.onclick = () => eventEmitter.emit('click');
+    </script>
+</body>
+
+</html>

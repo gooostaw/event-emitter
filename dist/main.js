@@ -1,18 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class EventListener {
-    constructor(eventEmitter, eventName, listenerFunc) {
+    constructor(eventEmitter, eventName, listenerFunc, emitOnce = false) {
         this.eventEmitter = eventEmitter;
         this.eventName = eventName;
         this.func = listenerFunc;
         this.isOn = true;
+        this.emitOnce = emitOnce;
         let listeners = eventEmitter.getListenersSet(eventName);
         if (listeners)
             listeners.add(this);
     }
     emit(...args) {
-        if (this.isOn)
+        if (this.isOn) {
+            if (this.emitOnce)
+                this.remove();
             this.func(...args);
+        }
     }
     on() {
         this.isOn = true;
@@ -26,7 +28,7 @@ class EventListener {
             listeners.delete(this);
     }
 }
-class EventEmitter {
+export default class EventEmitter {
     constructor() {
         this.events = new Map();
     }
@@ -41,6 +43,9 @@ class EventEmitter {
     }
     on(eventName, listenerFn) {
         return new EventListener(this, eventName, listenerFn);
+    }
+    one(eventName, listenerFn) {
+        return new EventListener(this, eventName, listenerFn, true);
     }
     off(eventName, listenerFn) {
         if (listenerFn) {
@@ -63,4 +68,3 @@ class EventEmitter {
                 listener.remove();
     }
 }
-exports.default = EventEmitter;

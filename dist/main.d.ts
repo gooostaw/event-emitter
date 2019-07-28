@@ -6,7 +6,8 @@ declare class EventListener {
     eventName: string;
     func: ListenerFunc;
     isOn: boolean;
-    constructor(eventEmitter: EventEmitter, eventName: string, listenerFunc: ListenerFunc);
+    emitOnce: boolean;
+    constructor(eventEmitter: EventEmitter, eventName: string, listenerFunc: ListenerFunc, emitOnce?: boolean);
     emit(...args: any[]): void;
     on(): void;
     off(): void;
@@ -17,6 +18,7 @@ export default class EventEmitter {
     constructor();
     getListenersSet(name: string): Set<EventListener>;
     on(eventName: string, listenerFn: ListenerFunc): EventListener;
+    one(eventName: string, listenerFn: ListenerFunc): EventListener;
     off(eventName: string, listenerFn: ListenerFunc): void;
     emit(eventName: string, ...args: any[]): void;
     clear(): void;
