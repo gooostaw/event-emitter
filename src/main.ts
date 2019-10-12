@@ -1,8 +1,8 @@
-interface ListenerFunc {
+export interface ListenerFunc {
     (...args: any): any;
 }
 
-class EventListener {
+export class EventListener {
     eventEmitter: EventEmitter;
     eventName: string;
     func: ListenerFunc;
