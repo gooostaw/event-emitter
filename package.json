@@ -2,7 +2,7 @@
     "name": "@gooostaw/event-emitter",
     "author": "Konrad Sobierajski",
     "license": "MIT",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "event emitter library",
     "keywords": ["event","emitter"],
     "main": "dist/main.js",

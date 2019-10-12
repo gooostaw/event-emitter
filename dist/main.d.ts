@@ -1,7 +1,7 @@
-interface ListenerFunc {
+export interface ListenerFunc {
     (...args: any): any;
 }
-declare class EventListener {
+export declare class EventListener {
     eventEmitter: EventEmitter;
     eventName: string;
     func: ListenerFunc;
@@ -23,4 +23,3 @@ export default class EventEmitter {
     emit(eventName: string, ...args: any[]): void;
     clear(): void;
 }
-export {};

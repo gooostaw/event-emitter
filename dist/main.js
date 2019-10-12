@@ -1,4 +1,4 @@
-class EventListener {
+export class EventListener {
     constructor(eventEmitter, eventName, listenerFunc, emitOnce = false) {
         this.eventEmitter = eventEmitter;
         this.eventName = eventName;
